@@ -1,6 +1,7 @@
 package com.gumkwang_app;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
@@ -8,6 +9,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_homepage, R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -60,4 +63,37 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    /*@Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        *//*if (id == R.id.logoutButton) {
+            MySoundPlayer.play(MySoundPlayer.CLICK);
+            FirebaseAuth.getInstance().signOut();
+            myStartActivity(Singup.class);
+
+        } else if (id == R.id.profile) {
+            MySoundPlayer.play(MySoundPlayer.CLICK);
+            myStartActivity(MemberEditActivity.class);
+
+            // Handle the camera action
+        } else if (id == R.id.nav_history) {
+            MySoundPlayer.play(MySoundPlayer.CLICK);
+            myStartActivity(History_list.class);
+
+        } else if (id == R.id.nav_clublist) {
+            MySoundPlayer.play(MySoundPlayer.CLICK);
+            myStartActivity(Club_list.class);
+
+        }*//*
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }*/
+
+
+
+
 }
